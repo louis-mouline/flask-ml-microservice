@@ -8,8 +8,9 @@ from dataclasses import dataclass, field
 
 # Define Car features
 @dataclass(repr=True)
-class CarFeatures():
+class CarFeatures:
     """Class holder of car features object."""
+
     # Initialized attributes
     model: str
     year: int
@@ -24,14 +25,14 @@ class CarFeatures():
     # Genreated attribute
     registrationAge: int
 
-    def __init__(self, features: dict, current_year: int=2021) -> None:
+    def __init__(self, features: dict, current_year: int = 2021) -> None:
         for feature_name, feature_value in features.items():
             setattr(self, feature_name, feature_value)
         self.registrationAge = current_year - self.year
 
 
 # Define util function to load data
-def load_data(data_path: str='./data/used_vehicles.csv') -> pd.DataFrame:
+def load_data(data_path: str = "./data/used_vehicles.csv") -> pd.DataFrame:
     """Load .csv dataset into a pandas.DataFrame"""
     df = pd.read_csv(data_path)
     return df
