@@ -38,7 +38,7 @@ flask-ml-microservice
 |   README.md
 |   requirements.txt
 |   run_docker.sh
-|   Used_Car8price_Prediction.ipynb
+|   Used_Car_Price_Prediction.ipynb
 ```
 
 ## Flask microservice
