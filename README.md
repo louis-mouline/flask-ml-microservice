@@ -48,10 +48,10 @@ The Flask ML Microservice can be run two ways.
 ### Containerized Flask Microservice Locally
 
 You can run the Flask Microservice as follows with the commmand: `python application.py`.
-![launch-app](./docs/flask_local.PNG)
+![launch_app](./docs/flask_local.PNG)
 
 To serve a prediction against the application, run the `predict.sh` or using Postman.
-[!postman-flask](./docs/postman-flask.PNG)
+![postman_flask](./docs/postman-flask.PNG)
 
 ### Containerized Flask Microservice
 
