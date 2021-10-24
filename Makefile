@@ -9,6 +9,6 @@ format:
 	python -m black *.py utils/*.py test/*.py
 
 lint:
-	python -m pylint --disable=R,C,W1203,E1101 test/test_data test/test_mllib utils/data utils/mllib
+	python -m pylint --disable=R,C,W1203,E1101 test/test_data test/test_mllib utils/data utils/mllib application
 
 all: install lint test

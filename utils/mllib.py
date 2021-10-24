@@ -7,7 +7,7 @@ import logging
 import numpy as np
 import pandas as pd
 from dataclasses import asdict
-from .data import CarFeatures, load_data
+from data import CarFeatures, load_data
 
 # Import ML libraries
 from sklearn.metrics import mean_squared_error
@@ -33,7 +33,7 @@ class UsedCarPriceModel:
     ) -> None:
         # Load model from disk
         with open(model_path, "rb") as file:
-            self.model = joblib.load(model_path)
+            self.model = joblib.load(file)
         # Load target scaler from disk
         with open(target_scaler_path, "rb") as file:
             self.target_scaler = joblib.load(target_scaler_path)

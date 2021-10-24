@@ -3,7 +3,7 @@ Defines all functions & class necessary to ingest data
 """
 # Import libraries
 import pandas as pd
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 # Define Car features
