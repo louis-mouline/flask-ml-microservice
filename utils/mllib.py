@@ -40,7 +40,6 @@ class UsedCarPriceModel:
 
         logging.debug(f"Model loaded from {model_path} & {target_scaler_path}")
 
-    @classmethod
     def fit(
         self,
         data_path: str = "./data/used_vehicles.csv",
@@ -91,22 +90,20 @@ class UsedCarPriceModel:
 
         self.save(model_path, target_scaler_path)
 
-    @classmethod
-    def predict(self, cars: list[CarFeatures]) -> dict:
+    def predict(self, car: CarFeatures) -> dict:
         """Predict the price for a car."""
         # Transform data
-        cars_df = pd.DataFrame(cars)
+        cars_df = pd.DataFrame(data=asdict(car), index=[0])
         cars_df.drop(columns=["year"], inplace=True)
 
         prediction = self.model.predict(cars_df)
         prediction = prediction.reshape(-1, 1)
         prediction_unscaled = self.target_scaler.inverse_transform(prediction)
 
-        logging.debug(f"Prediction(s) for {len(cars_df)} cars.")
+        logging.debug(f"Prediction for {car}")
 
-        return {"Prediction": prediction, "Unscaled prediction": prediction_unscaled}
+        return {"Prediction": prediction[0][0], "Unscaled prediction": prediction_unscaled[0][0]}
 
-    @classmethod
     def save(
         self,
         model_path: str = "./data/model.zlib",
@@ -125,7 +122,7 @@ class UsedCarPriceModel:
     @staticmethod
     def transform(
         data: pd.DataFrame, current_year: int = 2021
-    ) -> tuple(pd.DataFrame, np.ndarray):
+    ) -> tuple((pd.DataFrame, np.ndarray)):
         """Clean & Preprocess the database.
         See Used_Car_Price_Prediction.ipynb"""
         # Correct manufacter value
